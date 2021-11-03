@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InfraccionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tb_Agente">
+    <Key>
+      <PropertyRef Name="Cod_Agente" />
+    </Key>
+    <Property Name="Cod_Agente" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Nom_Agente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ape_Agente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cod_Distrito" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Tb_Auto">
+    <Key>
+      <PropertyRef Name="Num_Placa" />
+    </Key>
+    <Property Name="Num_Placa" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Año" Type="int" />
+    <Property Name="Cod_Marca" Type="nvarchar" MaxLength="3" />
+    <Property Name="Cod_Color" Type="nvarchar" MaxLength="3" />
+    <Property Name="Cod_Propietario" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Tb_Color">
+    <Key>
+      <PropertyRef Name="Cod_Color" />
+    </Key>
+    <Property Name="Cod_Color" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Des_Color" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Tb_Distrito">
+    <Key>
+      <PropertyRef Name="Cod_distrito" />
+    </Key>
+    <Property Name="Cod_distrito" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Nom_distrito" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tb_Infraccion">
+    <Key>
+      <PropertyRef Name="Cod_Infraccion" />
+    </Key>
+    <Property Name="Cod_Infraccion" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Des_Infraccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Multa" Type="money" />
+  </EntityType>
+  <EntityType Name="Tb_Marca">
+    <Key>
+      <PropertyRef Name="Cod_Marca" />
+    </Key>
+    <Property Name="Cod_Marca" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Des_Marca" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Tb_Papeleta">
+    <Key>
+      <PropertyRef Name="Num_Papeleta" />
+    </Key>
+    <Property Name="Num_Papeleta" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Fec_Papeleta" Type="datetime" />
+    <Property Name="Cod_Infraccion" Type="nvarchar" MaxLength="3" />
+    <Property Name="Num_Placa" Type="nvarchar" MaxLength="7" />
+    <Property Name="Est_Papeleta" Type="nvarchar" MaxLength="1" />
+    <Property Name="Cod_Agente" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Tb_Propietario">
+    <Key>
+      <PropertyRef Name="Cod_Propietario" />
+    </Key>
+    <Property Name="Cod_Propietario" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Nom_Propietario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ape_Propietario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dir_Propietario" Type="nvarchar" MaxLength="50" />
+    <Property Name="DNI_Propietario" Type="nvarchar" MaxLength="8" />
+    <Property Name="Cod_Distrito" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <Association Name="FK_Tb_Agente_Tb_Distrito">
+    <End Role="Tb_Distrito" Type="Self.Tb_Distrito" Multiplicity="0..1" />
+    <End Role="Tb_Agente" Type="Self.Tb_Agente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Distrito">
+        <PropertyRef Name="Cod_distrito" />
+      </Principal>
+      <Dependent Role="Tb_Agente">
+        <PropertyRef Name="Cod_Distrito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Auto_Tb_Color">
+    <End Role="Tb_Color" Type="Self.Tb_Color" Multiplicity="0..1" />
+    <End Role="Tb_Auto" Type="Self.Tb_Auto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Color">
+        <PropertyRef Name="Cod_Color" />
+      </Principal>
+      <Dependent Role="Tb_Auto">
+        <PropertyRef Name="Cod_Color" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Auto_Tb_Marca">
+    <End Role="Tb_Marca" Type="Self.Tb_Marca" Multiplicity="0..1" />
+    <End Role="Tb_Auto" Type="Self.Tb_Auto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Marca">
+        <PropertyRef Name="Cod_Marca" />
+      </Principal>
+      <Dependent Role="Tb_Auto">
+        <PropertyRef Name="Cod_Marca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Auto_Tb_Propietario">
+    <End Role="Tb_Propietario" Type="Self.Tb_Propietario" Multiplicity="0..1" />
+    <End Role="Tb_Auto" Type="Self.Tb_Auto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Propietario">
+        <PropertyRef Name="Cod_Propietario" />
+      </Principal>
+      <Dependent Role="Tb_Auto">
+        <PropertyRef Name="Cod_Propietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Papeleta_Tb_Agente">
+    <End Role="Tb_Agente" Type="Self.Tb_Agente" Multiplicity="0..1" />
+    <End Role="Tb_Papeleta" Type="Self.Tb_Papeleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Agente">
+        <PropertyRef Name="Cod_Agente" />
+      </Principal>
+      <Dependent Role="Tb_Papeleta">
+        <PropertyRef Name="Cod_Agente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Papeleta_Tb_Auto">
+    <End Role="Tb_Auto" Type="Self.Tb_Auto" Multiplicity="0..1" />
+    <End Role="Tb_Papeleta" Type="Self.Tb_Papeleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Auto">
+        <PropertyRef Name="Num_Placa" />
+      </Principal>
+      <Dependent Role="Tb_Papeleta">
+        <PropertyRef Name="Num_Placa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Papeleta_Tb_Infraccion">
+    <End Role="Tb_Infraccion" Type="Self.Tb_Infraccion" Multiplicity="0..1" />
+    <End Role="Tb_Papeleta" Type="Self.Tb_Papeleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Infraccion">
+        <PropertyRef Name="Cod_Infraccion" />
+      </Principal>
+      <Dependent Role="Tb_Papeleta">
+        <PropertyRef Name="Cod_Infraccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tb_Propietario_Tb_Distrito">
+    <End Role="Tb_Distrito" Type="Self.Tb_Distrito" Multiplicity="0..1" />
+    <End Role="Tb_Propietario" Type="Self.Tb_Propietario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Distrito">
+        <PropertyRef Name="Cod_distrito" />
+      </Principal>
+      <Dependent Role="Tb_Propietario">
+        <PropertyRef Name="Cod_Distrito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InfraccionesModelStoreContainer">
+    <EntitySet Name="Tb_Agente" EntityType="Self.Tb_Agente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Auto" EntityType="Self.Tb_Auto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Distrito" EntityType="Self.Tb_Distrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Infraccion" EntityType="Self.Tb_Infraccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Marca" EntityType="Self.Tb_Marca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Papeleta" EntityType="Self.Tb_Papeleta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Propietario" EntityType="Self.Tb_Propietario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Tb_Agente_Tb_Distrito" Association="Self.FK_Tb_Agente_Tb_Distrito">
+      <End Role="Tb_Distrito" EntitySet="Tb_Distrito" />
+      <End Role="Tb_Agente" EntitySet="Tb_Agente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Auto_Tb_Color" Association="Self.FK_Tb_Auto_Tb_Color">
+      <End Role="Tb_Color" EntitySet="Tb_Color" />
+      <End Role="Tb_Auto" EntitySet="Tb_Auto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Auto_Tb_Marca" Association="Self.FK_Tb_Auto_Tb_Marca">
+      <End Role="Tb_Marca" EntitySet="Tb_Marca" />
+      <End Role="Tb_Auto" EntitySet="Tb_Auto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Auto_Tb_Propietario" Association="Self.FK_Tb_Auto_Tb_Propietario">
+      <End Role="Tb_Propietario" EntitySet="Tb_Propietario" />
+      <End Role="Tb_Auto" EntitySet="Tb_Auto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Papeleta_Tb_Agente" Association="Self.FK_Tb_Papeleta_Tb_Agente">
+      <End Role="Tb_Agente" EntitySet="Tb_Agente" />
+      <End Role="Tb_Papeleta" EntitySet="Tb_Papeleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Papeleta_Tb_Auto" Association="Self.FK_Tb_Papeleta_Tb_Auto">
+      <End Role="Tb_Auto" EntitySet="Tb_Auto" />
+      <End Role="Tb_Papeleta" EntitySet="Tb_Papeleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Papeleta_Tb_Infraccion" Association="Self.FK_Tb_Papeleta_Tb_Infraccion">
+      <End Role="Tb_Infraccion" EntitySet="Tb_Infraccion" />
+      <End Role="Tb_Papeleta" EntitySet="Tb_Papeleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tb_Propietario_Tb_Distrito" Association="Self.FK_Tb_Propietario_Tb_Distrito">
+      <End Role="Tb_Distrito" EntitySet="Tb_Distrito" />
+      <End Role="Tb_Propietario" EntitySet="Tb_Propietario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

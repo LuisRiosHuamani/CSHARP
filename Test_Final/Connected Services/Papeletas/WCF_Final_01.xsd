@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://c203-04redes/WCFFinal_Rios/WCF_Final_01.ServicioPapeletas.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCF_Final_01" />
+  <xs:element name="ListarPapeleta">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPapeletaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCF_Final_01" minOccurs="0" name="ListarPapeletaResult" nillable="true" type="q1:ArrayOfPapeletaBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPapeletasPorFechas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fecini" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fecfin" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPapeletasPorFechasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF_Final_01" minOccurs="0" name="ListarPapeletasPorFechasResult" nillable="true" type="q2:ArrayOfPapeletaBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPapeletasImpagas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strCod" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPapeletasImpagasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF_Final_01" minOccurs="0" name="ListarPapeletasImpagasResult" nillable="true" type="q3:ArrayOfPapeletaBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

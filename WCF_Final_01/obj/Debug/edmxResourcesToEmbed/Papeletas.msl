@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InfraccionesModelStoreContainer" CdmEntityContainer="InfraccionesEntities">
+    <EntitySetMapping Name="Tb_Agente">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Agente">
+        <MappingFragment StoreEntitySet="Tb_Agente">
+          <ScalarProperty Name="Cod_Agente" ColumnName="Cod_Agente" />
+          <ScalarProperty Name="Nom_Agente" ColumnName="Nom_Agente" />
+          <ScalarProperty Name="Ape_Agente" ColumnName="Ape_Agente" />
+          <ScalarProperty Name="Cod_Distrito" ColumnName="Cod_Distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Auto">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Auto">
+        <MappingFragment StoreEntitySet="Tb_Auto">
+          <ScalarProperty Name="Num_Placa" ColumnName="Num_Placa" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Cod_Marca" ColumnName="Cod_Marca" />
+          <ScalarProperty Name="Cod_Color" ColumnName="Cod_Color" />
+          <ScalarProperty Name="Cod_Propietario" ColumnName="Cod_Propietario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Color">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Color">
+        <MappingFragment StoreEntitySet="Tb_Color">
+          <ScalarProperty Name="Cod_Color" ColumnName="Cod_Color" />
+          <ScalarProperty Name="Des_Color" ColumnName="Des_Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Distrito">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Distrito">
+        <MappingFragment StoreEntitySet="Tb_Distrito">
+          <ScalarProperty Name="Cod_distrito" ColumnName="Cod_distrito" />
+          <ScalarProperty Name="Nom_distrito" ColumnName="Nom_distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Infraccion">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Infraccion">
+        <MappingFragment StoreEntitySet="Tb_Infraccion">
+          <ScalarProperty Name="Cod_Infraccion" ColumnName="Cod_Infraccion" />
+          <ScalarProperty Name="Des_Infraccion" ColumnName="Des_Infraccion" />
+          <ScalarProperty Name="Multa" ColumnName="Multa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Marca">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Marca">
+        <MappingFragment StoreEntitySet="Tb_Marca">
+          <ScalarProperty Name="Cod_Marca" ColumnName="Cod_Marca" />
+          <ScalarProperty Name="Des_Marca" ColumnName="Des_Marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Papeleta">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Papeleta">
+        <MappingFragment StoreEntitySet="Tb_Papeleta">
+          <ScalarProperty Name="Num_Papeleta" ColumnName="Num_Papeleta" />
+          <ScalarProperty Name="Fec_Papeleta" ColumnName="Fec_Papeleta" />
+          <ScalarProperty Name="Cod_Infraccion" ColumnName="Cod_Infraccion" />
+          <ScalarProperty Name="Num_Placa" ColumnName="Num_Placa" />
+          <ScalarProperty Name="Est_Papeleta" ColumnName="Est_Papeleta" />
+          <ScalarProperty Name="Cod_Agente" ColumnName="Cod_Agente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Propietario">
+      <EntityTypeMapping TypeName="InfraccionesModel.Tb_Propietario">
+        <MappingFragment StoreEntitySet="Tb_Propietario">
+          <ScalarProperty Name="Cod_Propietario" ColumnName="Cod_Propietario" />
+          <ScalarProperty Name="Nom_Propietario" ColumnName="Nom_Propietario" />
+          <ScalarProperty Name="Ape_Propietario" ColumnName="Ape_Propietario" />
+          <ScalarProperty Name="Dir_Propietario" ColumnName="Dir_Propietario" />
+          <ScalarProperty Name="DNI_Propietario" ColumnName="DNI_Propietario" />
+          <ScalarProperty Name="Cod_Distrito" ColumnName="Cod_Distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
